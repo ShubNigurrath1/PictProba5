@@ -21,7 +21,35 @@
             android:orientation="horizontal" >
 
             <LinearLayout
-                android:layout_width="73dp"
+                android:layout_width="51dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="?attr/selectableItemBackground" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="51dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="?attr/selectableItemBackground" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="51dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
@@ -30,14 +58,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:srcCompat="?attr/selectableItemBackground" />
+
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="74dp"
+                android:layout_width="51dp"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/imageView4"
@@ -47,7 +74,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="77dp"
+                android:layout_width="51dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
@@ -57,29 +84,175 @@
                     android:layout_height="match_parent"
                     app:srcCompat="?attr/selectableItemBackground" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="51dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="?attr/selectableItemBackground" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="51dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="?attr/selectableItemBackground" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="70dp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="73dp"
+                android:layout_width="162dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="MyClick"
-                android:text="Button"
+                android:text="1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="137dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="MyClick2"
+                android:text="2" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="MyClick3"
+                android:text="3" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="MyClick4"
+                android:text="4" />
+
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="MyClick5"
+                android:text="5" />
+
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="MyClick6"
+                android:text="6" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="MyClick7"
+                android:text="7" />
+
+            <Button
+                android:id="@+id/button10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="MyClick8"
+                android:text="8" />
+
+            <Button
+                android:id="@+id/button11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="MyClick9"
+                android:text="9" />
+
+            <Button
+                android:id="@+id/button12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="MyClick0"
+                android:text="0" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="97dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="69dp"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:typeface="normal"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:visibility="visible" />
         </LinearLayout>
 
         <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="MyClick2"
+            android:layout_weight="1"
+            android:onClick="MyClickBack"
+            android:text="BackSpace"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="MyClickProv"
             android:text="Button" />
 
     </LinearLayout>
