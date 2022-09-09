@@ -10,11 +10,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class MainActivity extends AppCompatActivity {
+    public static int perv;
     //public static int i=0;
     ////////////////////////////////////////////////////////////////////////////////////////////
-    //07.08.2022 В общем  создал класс Дата и в нем метод гетНум,идея такая,чтобы метод перебирал мой
+    //07.08.2022 В общем  создал класс Дата и в нем метод гетПервПуст,идея такая,чтобы метод перебирал мой
     //массив ,состоящий из ИмэйджВиев ,и выдавал номер первого пустого элемента массива.
     //Таким образом я смогу последовательно заполнять нажатием кнопки мой массив из ИмэйджВиев
     //собственно нужной мне картинкой
@@ -71,14 +75,53 @@ public class Data{
         return i;
     }
     /////////////////////////////////////////////////////////////////////////////////////
-      public int getPoslZap(){// Этот метод возвращает нам индекс последней заполненной ИмэйджВью
-          while (pos<7) {
-              if(myMass[pos].getDrawable()!=null)pos++;//Проверяем текущий виджет,если заполнен,добавляем счетчик
+      public int getPoslZap() {// Этот метод возвращает нам индекс последней заполненной ИмэйджВью
+          while (pos < 7) {
+              if (myMass[pos].getDrawable() != null)
+                  pos++;//Проверяем текущий виджет,если заполнен,добавляем счетчик
               else break;//если пуст,выходим из цикла
           }
-          return pos-1;//минусуем переменную на один,так как она по сути возвращает нам позицию первого пустого виджета.
-      }                //возникает вопрос,а зачем нам этот метод,если есть метод getPervPust,который возвращает тот же индекс? Ответ станет виден,если
-}                      //мы заполним все виджеты и попробуем применить getPervPust вместо getPoslZap))
+          return pos - 1;//минусуем переменную на один,так как она по сути возвращает нам позицию первого пустого виджета.
+          //возникает вопрос,а зачем нам этот метод,если есть метод getPervPust,который возвращает тот же индекс? Ответ станет виден,если
+      }    //мы заполним все виджеты и попробуем применить getPervPust вместо getPoslZap))
+
+    public void SetEkran(String text){
+        Identor id=new Identor();
+        Ekran ekran=new Ekran();
+        ImageView imacoll[]=ekran.getDisp();
+        ImageView myekr[]=ekran.getDisp();//получили массив ссылок на наши виджеты
+        int c=0;
+       String g=text;//Создаём пока временную строку,только для эксперимента.
+       StringBuilder sb2=new StringBuilder(g);//Помещаем ее в StringBuilder,для провелдения нужных нам манипуляций
+       ArrayList<String>mylist=new ArrayList<String>();//Создаём динамический массив
+       while(c<sb2.length()) {mylist.add(c,sb2.substring(c,c+1));c++;}//С помощью цикла заполняем наш массив строками,состоящими из нашей изначальной строки,каждая подстрока по одному символу
+        int j=0;
+        while (j<6){
+            if(mylist.get(j).equals("1"))imacoll[j].setImageBitmap(id.odin);
+            else if(mylist.get(j).equals("2"))imacoll[j].setImageBitmap(id.dva);
+            else if (mylist.get(j).equals("3"))imacoll[j].setImageBitmap(id.tri);
+            else if (mylist.get(j).equals("4"))imacoll[j].setImageBitmap(id.chet);
+            else if (mylist.get(j).equals("5"))imacoll[j].setImageBitmap(id.pyat);
+            else if (mylist.get(j).equals("6"))imacoll[j].setImageBitmap(id.shest);
+            else if (mylist.get(j).equals("7"))imacoll[j].setImageBitmap(id.sem);
+            else if (mylist.get(j).equals("8"))imacoll[j].setImageBitmap(id.vosem);
+            else if (mylist.get(j).equals("9"))imacoll[j].setImageBitmap(id.devat);
+            else if (mylist.get(j).equals("0"))imacoll[j].setImageBitmap(id.nol);
+            else if (mylist.get(j).equals(null))imacoll[j].setImageBitmap(null);
+            else  if (mylist.get(j).equals(""))imacoll[j].setImageBitmap(null);
+            //else if (mylist.get(j).equals(""))imacoll[j].setImageBitmap(null);
+
+            j++;
+
+        }
+
+
+
+    }
+
+}
+
+
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public class Identor {//Создаем объект битмап для каждой картинки из ресурсов
         Bitmap odin=BitmapFactory.decodeResource(getResources(),R.drawable.odin);
@@ -91,36 +134,104 @@ public class Data{
         Bitmap vosem=BitmapFactory.decodeResource(getResources(),R.drawable.vosem);
         Bitmap devat=BitmapFactory.decodeResource(getResources(),R.drawable.devatt);
         Bitmap nol=BitmapFactory.decodeResource(getResources(),R.drawable.nolll);
+
+        Bitmap bitcoll[]={odin,dva,tri,chet,pyat,shest,sem,vosem,devat,nol};//создали массив из битмапов
+
+        Bitmap[] bitReturn(){//метод возвращает наш массив битмапов.
+
+            return bitcoll;
+        }
         //сооздаем массив символов,это нужно,чтобы помещать в него символы ,соответствующие картинке битмап
-        char symbols[]=new char[10];
+        //char symbols[]=new char[10];
+        ArrayList<String>symb=new ArrayList<String>();
         Ekran ekran=new Ekran();
         ImageView mydisp[]=ekran.getDisp();
         int p=0;
 
-        public String znach(){//метод сначала заполняет массив символов соответствующимим значениями,затем помещает массив
+        public String strZnach(){//метод сначала заполняет массив символов соответствующимим значениями,затем помещает массив
             while (p<7){      //в строку,и,соответсвенно в итоге возвращает эту строку
 
                 if ((BitmapDrawable)mydisp[p].getDrawable()==null)break;
 //создаем текущий битмап последовательно для содержимого каждого элемента массива из имэйджвиев
                 Bitmap tekBm=((BitmapDrawable)mydisp[p].getDrawable()).getBitmap();
 //Для того,чтобы сравнить наши битмапы,используем метод sameAs(),метод equals почему то не работает
-                if (tekBm.sameAs(odin)) symbols[p]='1';
-                else if (tekBm.sameAs(dva)) symbols[p]='2';
-                else if (tekBm.sameAs(tri)) symbols[p]='3';
-                else if (tekBm.sameAs(chet)) symbols[p]='4';
-                else if (tekBm.sameAs(pyat)) symbols[p]='5';
-                else if (tekBm.sameAs(shest)) symbols[p]='6';
-                else if (tekBm.sameAs(sem)) symbols[p]='7';
-                else if (tekBm.sameAs(vosem)) symbols[p]='8';
-                else if (tekBm.sameAs(devat)) symbols[p]='9';
-                else if (tekBm.sameAs(nol)) symbols[p]='0';
+//21.08.2022 заменил массив char на ArrayList String symb,так как массив при преобразовании в строку создавал пустые значения
+//и это не давало потом преобразовать такую строку в число.
+                if (tekBm.sameAs(odin)) symb.add("1");
+                else if (tekBm.sameAs(dva)) symb.add("2");
+                else if (tekBm.sameAs(tri)) symb.add("3");
+                else if (tekBm.sameAs(chet)) symb.add("4");
+                else if (tekBm.sameAs(pyat)) symb.add("5");
+                else if (tekBm.sameAs(shest)) symb.add("6");
+                else if (tekBm.sameAs(sem)) symb.add("7");
+                else if (tekBm.sameAs(vosem)) symb.add("8");
+                else if (tekBm.sameAs(devat)) symb.add("9");
+                else if (tekBm.sameAs(nol)) symb.add("0");
                 p++;
             }
+            int o=0;
+            String b;
+            int k;
+            StringBuilder sb=new StringBuilder();
+            while (o<symb.size()){
+            sb.append(symb.get(o));o++;}
 
-            String b=new String(symbols);
-
+            b=sb.toString();
+            if (b!="") k=Integer.parseInt(b);//если не добавить условие,программа вылетает при нажатии при пустом экране
             return b;
+
+
+
+
         }
+
+
+    }
+    public class Setter{
+       // private String text;
+        public void setText(){
+            String g="23475";
+            Identor id=new Identor();
+            Ekran myekr=new Ekran();
+            ImageView imacoll[]=myekr.getDisp();
+           // Bitmap[] bitmass =id.bitReturn();
+            int c=0;
+            //Создаём пока временную строку,только для эксперимента.
+            StringBuilder sb2=new StringBuilder(g);//Помещаем ее в StringBuilder,для проведения нужных нам манипуляций
+            ArrayList<String>mylist=new ArrayList<String>();//Создаём динамический массив
+            while(c<sb2.length()) {mylist.add(c,sb2.substring(c,c+1));c++;}//С помощью цикла заполняем наш массив строками,состоящими из нашей изначальной строки,каждая подстрока по одному символу
+/////////////////////////////////////////////////////////////////////
+            int j=0;
+            while (j<6){
+                if(mylist.get(j).equals("1"))imacoll[j].setImageBitmap(id.odin);
+                else if(mylist.get(j).equals("2"))imacoll[j].setImageBitmap(id.dva);
+                else if (mylist.get(j).equals("3"))imacoll[j].setImageBitmap(id.tri);
+                else if (mylist.get(j).equals("4"))imacoll[j].setImageBitmap(id.chet);
+                else if (mylist.get(j).equals("5"))imacoll[j].setImageBitmap(id.pyat);
+                else if (mylist.get(j).equals("6"))imacoll[j].setImageBitmap(id.shest);
+                else if (mylist.get(j).equals("7"))imacoll[j].setImageBitmap(id.sem);
+                else if (mylist.get(j).equals("8"))imacoll[j].setImageBitmap(id.vosem);
+                else if (mylist.get(j).equals("9"))imacoll[j].setImageBitmap(id.devat);
+                else if (mylist.get(j).equals("0"))imacoll[j].setImageBitmap(id.nol);
+                //else if (mylist.get(j).equals(""))imacoll[j].setImageBitmap(null);
+
+                j++;
+
+            }
+
+
+        }
+    }
+    public void MyClickPlus(View view){
+
+       // Ekran data=new Ekran();
+        Identor id=new Identor();
+        String ss=id.strZnach();
+
+        //if (ss=="")return;
+        //tex.setText(ss);
+        Data dt=new Data();
+        dt.SetEkran("5554677");
 
 
     }
@@ -234,6 +345,7 @@ public void MyClick0(View view){
     iuu[mydat2.getPervPust()].setImageBitmap(id.nol);
 
 }
+
 public void MyClickBack(View view){
 
         Data mydatBack=new Data();
@@ -249,8 +361,49 @@ public void MyClickProv(View view){//Эта процедура получает 
     TextView tex=findViewById(R.id.textView2);
     Ekran data=new Ekran();
     Identor id=new Identor();
-    String ss=id.znach();
+    String ss=id.strZnach();
+
+    if (ss=="")return;
     tex.setText(ss);
+    Data dt=new Data();
+    dt.SetEkran("345567");
+    ///Теперь попробуем выв ести строку на экран в виде битмапов.
+}
+
+public void MyclickExp(View view){
+        //ArrayList<String>mylist=new ArrayList<>();
+//int k=5;
+
+        Identor id=new Identor();
+        Ekran myekr=new Ekran();
+        ImageView imacoll[]=myekr.getDisp();
+        Bitmap[] bitmass =id.bitReturn();
+    int c=0;
+    String g="1234567";//Создаём пока временную строку,только для эксперимента.
+    StringBuilder sb2=new StringBuilder(g);//Помещаем ее в StringBuilder,для проведения нужных нам манипуляций
+    ArrayList<String>mylist=new ArrayList<String>();//Создаём динамический массив
+    while(c<sb2.length()) {mylist.add(c,sb2.substring(c,c+1));c++;}//С помощью цикла заполняем наш массив строками,состоящими из нашей изначальной строки,каждая подстрока по одному символу
+/////////////////////////////////////////////////////////////////////
+    int j=0;
+    while (j<6){
+        if(mylist.get(j).equals("1"))imacoll[j].setImageBitmap(id.odin);
+        else if(mylist.get(j).equals("2"))imacoll[j].setImageBitmap(id.dva);
+        else if (mylist.get(j).equals("3"))imacoll[j].setImageBitmap(id.tri);
+        else if (mylist.get(j).equals("4"))imacoll[j].setImageBitmap(id.chet);
+        else if (mylist.get(j).equals("5"))imacoll[j].setImageBitmap(id.pyat);
+        else if (mylist.get(j).equals("6"))imacoll[j].setImageBitmap(id.shest);
+        else if (mylist.get(j).equals("7"))imacoll[j].setImageBitmap(id.sem);
+        else if (mylist.get(j).equals("8"))imacoll[j].setImageBitmap(id.vosem);
+        else if (mylist.get(j).equals("9"))imacoll[j].setImageBitmap(id.devat);
+        else if (mylist.get(j).equals("0"))imacoll[j].setImageBitmap(id.nol);
+
+        j++;
+
+    }
+
+
+
+
 }
 }
                                  //СТАРЫЕ      КОММЕНТЫ//
