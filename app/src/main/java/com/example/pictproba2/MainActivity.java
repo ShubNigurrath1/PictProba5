@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
+//10.09.2022
 public class MainActivity extends AppCompatActivity {
     public static int perv;
     //public static int i=0;
