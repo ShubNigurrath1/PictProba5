@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-//12.09.2022
+//12.09.2022 вечер
 public class MainActivity extends AppCompatActivity {
     public static int a;
     public static int b;
