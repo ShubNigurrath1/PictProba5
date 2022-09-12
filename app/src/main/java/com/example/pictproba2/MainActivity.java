@@ -15,7 +15,9 @@ import java.util.Arrays;
 
 //10.09.2022
 public class MainActivity extends AppCompatActivity {
-    public static int perv;
+    public static int a;
+    public static int b;
+    public static int c;
     //public static int i=0;
     ////////////////////////////////////////////////////////////////////////////////////////////
     //07.08.2022 В общем  создал класс Дата и в нем метод гетПервПуст,идея такая,чтобы метод перебирал мой
@@ -86,33 +88,47 @@ public class Data{
       }    //мы заполним все виджеты и попробуем применить getPervPust вместо getPoslZap))
 
     public void SetEkran(String text){
-        Identor id=new Identor();
-        Ekran ekran=new Ekran();
-        ImageView imacoll[]=ekran.getDisp();
-        ImageView myekr[]=ekran.getDisp();//получили массив ссылок на наши виджеты
-        int c=0;
-       String g=text;//Создаём пока временную строку,только для эксперимента.
-       StringBuilder sb2=new StringBuilder(g);//Помещаем ее в StringBuilder,для провелдения нужных нам манипуляций
-       ArrayList<String>mylist=new ArrayList<String>();//Создаём динамический массив
-       while(c<sb2.length()) {mylist.add(c,sb2.substring(c,c+1));c++;}//С помощью цикла заполняем наш массив строками,состоящими из нашей изначальной строки,каждая подстрока по одному символу
-        int j=0;
-        while (j<6){
-            if(mylist.get(j).equals("1"))imacoll[j].setImageBitmap(id.odin);
-            else if(mylist.get(j).equals("2"))imacoll[j].setImageBitmap(id.dva);
-            else if (mylist.get(j).equals("3"))imacoll[j].setImageBitmap(id.tri);
-            else if (mylist.get(j).equals("4"))imacoll[j].setImageBitmap(id.chet);
-            else if (mylist.get(j).equals("5"))imacoll[j].setImageBitmap(id.pyat);
-            else if (mylist.get(j).equals("6"))imacoll[j].setImageBitmap(id.shest);
-            else if (mylist.get(j).equals("7"))imacoll[j].setImageBitmap(id.sem);
-            else if (mylist.get(j).equals("8"))imacoll[j].setImageBitmap(id.vosem);
-            else if (mylist.get(j).equals("9"))imacoll[j].setImageBitmap(id.devat);
-            else if (mylist.get(j).equals("0"))imacoll[j].setImageBitmap(id.nol);
-            else if (mylist.get(j).equals(null))imacoll[j].setImageBitmap(null);
-            else  if (mylist.get(j).equals(""))imacoll[j].setImageBitmap(null);
-            //else if (mylist.get(j).equals(""))imacoll[j].setImageBitmap(null);
+        Identor id=new Identor();//Создаем экземпляр объекта
+        Ekran ekran=new Ekran();//Создаем экземпляр объекта
+        ImageView imacoll[]=ekran.getDisp();//Создаём массив имэйджей
 
-            j++;
 
+       String g=text;//Строка,передаваемая в метод из параметров метода
+        if(g.equals("")){//Условие,если наша строка из параметров пустая,заполняем все имэйджы пустотой:
+            imacoll[0].setImageDrawable(null);
+            imacoll[1].setImageDrawable(null);
+            imacoll[2].setImageDrawable(null);
+            imacoll[3].setImageDrawable(null);
+            imacoll[4].setImageDrawable(null);
+            imacoll[5].setImageDrawable(null);
+            imacoll[6].setImageDrawable(null);
+        }
+        else {//Иначе,то есть если строка не пустая,тогда выполняем этот блок кода:
+            int c=0;//Создаём и инициализируем переменную для цикла
+            StringBuilder sb2 = new StringBuilder(g);//Помещаем строку из параметров в StringBuilder,для провелдения нужных нам манипуляций
+            ArrayList<String> mylist = new ArrayList<String>();//Создаём динамический массив
+            while (c < sb2.length()) {//Пока переменная меньше длины стрингбилдера
+                mylist.add(c, sb2.substring(c, c + 1));//Добавляем в ячейки динамического массива подстроки длиной в один символ из стрингбилдера
+                c++;//Итерируем
+            }
+            int j = 0;//Переменная для цикла
+            while (j < mylist.size()) {//Пока переменная меньше шести(Так как нумерация имэйджей начинается с нуля)
+                           //В зависимости от символа в ячейке динамического массива заполняем поочередно имэйджы тем или иным битмапом
+                if (mylist.get(j).equals("1")) imacoll[j].setImageBitmap(id.odin);
+                else if (mylist.get(j).equals("2")) imacoll[j].setImageBitmap(id.dva);
+                else if (mylist.get(j).equals("3")) imacoll[j].setImageBitmap(id.tri);
+                else if (mylist.get(j).equals("4")) imacoll[j].setImageBitmap(id.chet);
+                else if (mylist.get(j).equals("5")) imacoll[j].setImageBitmap(id.pyat);
+                else if (mylist.get(j).equals("6")) imacoll[j].setImageBitmap(id.shest);
+                else if (mylist.get(j).equals("7")) imacoll[j].setImageBitmap(id.sem);
+                else if (mylist.get(j).equals("8")) imacoll[j].setImageBitmap(id.vosem);
+                else if (mylist.get(j).equals("9")) imacoll[j].setImageBitmap(id.devat);
+                else if (mylist.get(j).equals("0")) imacoll[j].setImageBitmap(id.nol);
+
+
+                j++;
+
+            }
         }
 
 
@@ -223,17 +239,27 @@ public class Data{
         }
     }
     public void MyClickPlus(View view){
-
-       // Ekran data=new Ekran();
         Identor id=new Identor();
         String ss=id.strZnach();
-
-        //if (ss=="")return;
-        //tex.setText(ss);
+        if (ss.equals(""))return;
+       Ekran data=new Ekran();
+        a=Integer.parseInt(ss);
         Data dt=new Data();
-        dt.SetEkran("5554677");
+        dt.SetEkran("");
+    }
 
-
+    public void MyClickRav(View view){
+        //11.09.2022 В общем при попытке задать значение экрана приложение вылетает.
+        //12.09.2022 Господи,спасибо,мне понадобились сутки,чтоы решить проблему.Причина была в методе SetEkran
+        //в цикле,который перебирал ArrayList в условиях было указано j<6,а надо было j<mylist.size()!!!!
+        Data dt=new Data();
+        Identor id=new Identor();
+        String ss=id.strZnach();
+        if(ss.equals(""))return;
+        b=Integer.parseInt(ss);
+        c=a+b;
+       String e=Integer.toString(c);
+        dt.SetEkran(e);
     }
 
 public void MyClick(View view){
@@ -358,15 +384,15 @@ public void MyClickBack(View view){
 
     }
 public void MyClickProv(View view){//Эта процедура получает преобразует значения битмапов в массиве виджетов в строку с идентичными цифрами
-    TextView tex=findViewById(R.id.textView2);
-    Ekran data=new Ekran();
-    Identor id=new Identor();
-    String ss=id.strZnach();
+    //TextView tex=findViewById(R.id.textView2);
+   // Ekran data=new Ekran();
+    //Identor id=new Identor();
+  // String ss=id.strZnach();
 
-    if (ss=="")return;
-    tex.setText(ss);
+   // if (ss=="")return;
+   // tex.setText(ss);
     Data dt=new Data();
-    dt.SetEkran("345567");
+    dt.SetEkran("111233");
     ///Теперь попробуем выв ести строку на экран в виде битмапов.
 }
 
