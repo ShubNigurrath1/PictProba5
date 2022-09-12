@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     public static int a;
     public static int b;
     public static int c;
+    public static int schetNaj=0;
     //public static int i=0;
     ////////////////////////////////////////////////////////////////////////////////////////////
     //07.08.2022 В общем  создал класс Дата и в нем метод гетПервПуст,идея такая,чтобы метод перебирал мой
@@ -239,6 +240,8 @@ public class Data{
         }
     }
     public void MyClickPlus(View view){
+
+
         Identor id=new Identor();
         String ss=id.strZnach();
         if (ss.equals(""))return;
@@ -252,13 +255,19 @@ public class Data{
         //11.09.2022 В общем при попытке задать значение экрана приложение вылетает.
         //12.09.2022 Господи,спасибо,мне понадобились сутки,чтоы решить проблему.Причина была в методе SetEkran
         //в цикле,который перебирал ArrayList в условиях было указано j<6,а надо было j<mylist.size()!!!!
+
         Data dt=new Data();
         Identor id=new Identor();
         String ss=id.strZnach();
         if(ss.equals(""))return;
+        schetNaj++;
+        if(schetNaj==1)
         b=Integer.parseInt(ss);
-        c=a+b;
-       String e=Integer.toString(c);
+
+        //c=a+b;
+        a=a+b;
+
+       String e=Integer.toString(a);
         dt.SetEkran(e);
     }
 
