@@ -19,6 +19,10 @@ public class MainActivity extends AppCompatActivity {
     public static int b;
     public static int c;
     public static int schetNaj=0;
+    public static boolean plusclick=false;
+    public static boolean minusclick=false;
+    public static boolean umnoclick=false;
+    public static  boolean razdelclick=false;
     //public static int i=0;
     ////////////////////////////////////////////////////////////////////////////////////////////
     //07.08.2022 В общем  создал класс Дата и в нем метод гетПервПуст,идея такая,чтобы метод перебирал мой
@@ -249,7 +253,68 @@ public class Data{
         a=Integer.parseInt(ss);
         Data dt=new Data();
         dt.SetEkran("");
+        b=0;
+        schetNaj=0;//Обнуляем счетчик нажатий клавиши равно,чтобы при последующих нажатиях обновить значение второго слагаемого .
+        //Например,мы произвели сложение двух чисел ,и на экране у нас появляетя результат.Допустим ,мы решили добавить к
+        //результату какое либо число.При нажатии клавиши плюс мы задаем новое значение переменной а.Но если счетчик
+        //нажатий клавиши равно не будет сброшен,в переменной б будет висеть старое значение,что нас,естественно не
+        //устраивает.
+        plusclick=true;
+        minusclick=false;
+        umnoclick=false;
+        razdelclick=false;
+
     }
+    public void MyClickMinus(View view){
+        Identor id=new Identor();
+        String ss=id.strZnach();
+        if (ss.equals(""))return;
+        Ekran data=new Ekran();
+        a=Integer.parseInt(ss);
+        Data dt=new Data();
+        dt.SetEkran("");
+        b=0;
+
+
+        minusclick=true;
+        umnoclick=false;
+        razdelclick=false;
+        plusclick=false;
+        schetNaj=0;
+    }
+    public void MyClickUmno(View view){
+        Identor id=new Identor();
+        String ss=id.strZnach();
+        if (ss.equals(""))return;
+        Ekran data=new Ekran();
+        a=Integer.parseInt(ss);
+        Data dt=new Data();
+        dt.SetEkran("");
+        b=0;
+        minusclick=false;
+        umnoclick=true;
+        razdelclick=false;
+        plusclick=false;
+        schetNaj=0;
+
+    }
+    public void MyClickRazdel(View view){
+        Identor id=new Identor();
+        String ss=id.strZnach();
+        if (ss.equals(""))return;
+        Ekran data=new Ekran();
+        a=Integer.parseInt(ss);
+        Data dt=new Data();
+        dt.SetEkran("");
+        b=0;
+        minusclick=false;
+        umnoclick=false;
+        razdelclick=true;
+        plusclick=false;
+        schetNaj=0;
+
+    }
+
 
     public void MyClickRav(View view){
         //11.09.2022 В общем при попытке задать значение экрана приложение вылетает.
@@ -264,11 +329,19 @@ public class Data{
         if(schetNaj==1)
         b=Integer.parseInt(ss);
 
-        //c=a+b;
+        if (plusclick==true)
         a=a+b;
+        else if (minusclick==true)
+            a=a-b;
+        else if (razdelclick==true)
+            a=a/b;
+        else if (umnoclick==true)
+            a=a*b;
+        if (a<0)a=0;
 
        String e=Integer.toString(a);
         dt.SetEkran(e);
+
     }
 
 public void MyClick(View view){
