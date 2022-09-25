@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">PictProba2</string>
+    <string name="b1name">1</string>
+    <string name="b2name">2</string>
+    <string name="b3name">3</string>
+    <string name="b4name">4</string>
+    <string name="b5name">5</string>
+    <string name="b6name">6</string>
+    <string name="b7name">7</string>
+    <string name="b8name">8</string>
+    <string name="b9name">9</string>
+    <string name="b0name">0</string>
+    <string name="bplusname">+</string>
+    <string name="bminusname">-</string>
+    <string name="bumnoname">*</string>
+    <string name="brazdname">/</string>
+    <string name="bBackname">Backspace</string>
+    <string name="bravnoname">=</string>
+
 </resources>
