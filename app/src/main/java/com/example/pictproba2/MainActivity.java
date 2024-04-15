@@ -1,10 +1,14 @@
 package com.example.pictproba2;
 
+import static com.example.pictproba2.R.drawable.dva;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableContainer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -38,13 +42,17 @@ public class MainActivity extends AppCompatActivity {
         Ekran myekran=new Ekran();
         ImageView iuu[]= myekran.getDisp();
         //Устанавливани в каждый элемент массива значение содержимого null,так,на всякий случай чтобы при запуске экран был гарантировано пуст))
-        iuu[0].setImageDrawable(null);
-        iuu[1].setImageDrawable(null);
-        iuu[2].setImageDrawable(null);
-        iuu[3].setImageDrawable(null);
-        iuu[4].setImageDrawable(null);
-        iuu[5].setImageDrawable(null);
-        iuu[6].setImageDrawable(null);
+         //15.04.2024 Впоследствии выявилась следующая проблема:если не присваивать моим всем ImageView значение null
+        //то при запуске приложения при  нажатии клавиш цифры не отображались на экране,более того при нажатии плюса или например равно
+        //программа вылетала.В итоге экспериментальным путем выяснилось следующее:по умолчанию в моих ImageView стоит какое то значение.
+        //Какое?Предстоит выяснить.Потому что,если несколько раз нажать клавишу BackSpace,то всё работает.
+        //iuu[0].setImageDrawable(null);
+        //iuu[1].setImageDrawable(null);
+       // iuu[2].setImageDrawable(null);
+        //iuu[3].setImageDrawable(null);
+       // iuu[4].setImageDrawable(null);
+       // iuu[5].setImageDrawable(null);
+      // iuu[6].setImageDrawable(null);
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     public  class Ekran {
@@ -146,7 +154,7 @@ public class Data{
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public class Identor {//Создаем объект битмап для каждой картинки из ресурсов
         Bitmap odin=BitmapFactory.decodeResource(getResources(),R.drawable.odin);
-        Bitmap dva=BitmapFactory.decodeResource(getResources(),R.drawable.dva);
+        Bitmap dva=BitmapFactory.decodeResource(getResources(), R.drawable.dva);
         Bitmap tri=BitmapFactory.decodeResource(getResources(),R.drawable.tri);
         Bitmap chet=BitmapFactory.decodeResource(getResources(),R.drawable.chetire);
         Bitmap pyat=BitmapFactory.decodeResource(getResources(),R.drawable.pyat);
@@ -247,8 +255,8 @@ public class Data{
 
 
         Identor id=new Identor();
-        String ss=id.strZnach();
-        if (ss.equals(""))return;
+        String ss=id.strZnach();//Получили строковое значение экрана калькулятора
+        if (ss.equals(""))return;//Если там ничего нет,то выходим из метода
        Ekran data=new Ekran();
         a=Integer.parseInt(ss);
         Data dt=new Data();
