@@ -46,13 +46,13 @@ public class MainActivity extends AppCompatActivity {
         //то при запуске приложения при  нажатии клавиш цифры не отображались на экране,более того при нажатии плюса или например равно
         //программа вылетала.В итоге экспериментальным путем выяснилось следующее:по умолчанию в моих ImageView стоит какое то значение.
         //Какое?Предстоит выяснить.Потому что,если несколько раз нажать клавишу BackSpace,то всё работает.
-        //iuu[0].setImageDrawable(null);
-        //iuu[1].setImageDrawable(null);
-       // iuu[2].setImageDrawable(null);
-        //iuu[3].setImageDrawable(null);
-       // iuu[4].setImageDrawable(null);
-       // iuu[5].setImageDrawable(null);
-      // iuu[6].setImageDrawable(null);
+        iuu[0].setImageDrawable(null);
+        iuu[1].setImageDrawable(null);
+        iuu[2].setImageDrawable(null);
+        iuu[3].setImageDrawable(null);
+        iuu[4].setImageDrawable(null);
+       iuu[5].setImageDrawable(null);
+      iuu[6].setImageDrawable(null);
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     public  class Ekran {
